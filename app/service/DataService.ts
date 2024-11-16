@@ -3,7 +3,13 @@ import { SensorData } from "../types/SensorData.js";
 
 class DataService {
 
-  data: SensorData|null = null;
+  data: SensorData = {
+    timestamp: 0,
+    humanDetected: false,
+    pressure: 0,
+    gas1: 0,
+    gas2: 0
+  };
 
   pressureLastTrigger: number | null = null;
   gas1LastTrigger: number | null = null;
