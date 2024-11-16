@@ -1,5 +1,5 @@
 /*
-|--------------------------------------------------------------------------
+|--------------------------------------------------------------------------z  
 | Routes file
 |--------------------------------------------------------------------------
 |
@@ -18,12 +18,17 @@ router.get('/', async () => {
 })
 
 const SystemsController = () => import('#controllers/systems_controller')
+const SensorsController = () => import('#controllers/sensors_controller')
 
 
 router.post('/gas-report', [SystemsController, 'report'])
 
 
 router.group(() => {
+  router.get('/data-report', [SensorsController, 'get'])
+  router.get('/history', [SensorsController, 'index'])
+  router.get('/last-detect', [SensorsController, 'lastDetect'])
+
 
 })
 .use([middleware.auth()])
