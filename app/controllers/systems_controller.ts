@@ -3,6 +3,7 @@ import SettingService from '../service/SettingService.js'
 import { SensorData } from '../types/SensorData.js'
 import DataService from '../service/DataService.js'
 import AuthService from '../service/AuthService.js';
+import PushNotificationService from '../service/PushNotificationService.js';
 
 export default class SystemsController {
 
@@ -42,4 +43,9 @@ export default class SystemsController {
   
   }
 
+  async registerToken({request}: HttpContext) {
+    const {token} = request.body();
+    return await PushNotificationService.registerToken(token)
+
+  }
 }
