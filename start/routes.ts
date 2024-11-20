@@ -28,7 +28,11 @@ router.group(() => {
   router.get('/history', [SensorsController, 'index'])
   router.get('/last-detect', [SensorsController, 'lastDetect'])
   router.post('/register-token', [SystemsController, 'registerToken'])
+  router.get("/settings", [SystemsController, 'getSettings'])
+  router.post("/settings", [SystemsController, 'changeSetting'])
 
 })
 
-
+// no api
+router.post("/login", [SystemsController, 'login'])
+router.post("/valid-token", [SystemsController, 'validToken'])

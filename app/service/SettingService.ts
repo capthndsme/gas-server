@@ -20,14 +20,20 @@ class SettingService {
 
 
   constructor() {
-    const exist = readFileSync(`${homedir()}/.gasrc}`)
-    if (exist) {
-      const parse = JSON.parse(readFileSync(`${homedir()}/.gasrc`).toString())
-      this.config = parse
-    } else {
-      const data=  JSON.stringify(this.config)
-      writeFileSync(`${homedir()}/.gasrc`, data)
+    try {
+      const exist = readFileSync(`${homedir()}/.gasrc}`)
+      if (exist) {
+        const parse = JSON.parse(readFileSync(`${homedir()}/.gasrc`).toString())
+        this.config = parse
+      } else {
+        const data=  JSON.stringify(this.config)
+        writeFileSync(`${homedir()}/.gasrc`, data)
+      }
+    } catch (e) {
+      console.log("error read config file. making new one", e)
+      writeFileSync(`${homedir()}/.gasrc`, JSON.stringify(this.config))
     }
+    
   }
 
   async updateSetting(setting: Partial<typeof this.config & {password?: string}>)  {
