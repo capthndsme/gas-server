@@ -17,7 +17,7 @@ export default class SensorsController {
   }
 
   async lastDetect() {
-    return await DataService.getLastDetect() || {humanDetected: false}
+    return await DataService.getLastDetect()  
   
   }
 
