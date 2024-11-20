@@ -13,8 +13,8 @@ export default class extends BaseSchema {
       table.boolean('human_detected')
       table.index('human_detected')
       table.float( 'pressure')
-      table.float( 'gas1')
-      table.float( 'gas2')
+      table.float( 'gas_1')
+      table.float( 'gas_2')
 
 
     })
