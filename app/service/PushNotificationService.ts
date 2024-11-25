@@ -24,7 +24,7 @@ class PushNotificationService {
 
   async registerToken(token: string) {
     console.log("register token", token)
-    const exist = await Token.query().where('token', token)
+    const exist = await Token.query().where('token', token).first()
     if (!exist) {
       await Token.create({
         token
