@@ -13,15 +13,15 @@ class SettingService {
   } = {
     // GasWeb123
     passwordHash: "$2a$10$xBB000A7Q4vaX741VIg7Z.QC7dfvRh7MiS9SBvd9XMpdNZc5PqFk2",
-    lowVal: 300,
-    midVal: 600,
+    lowVal: 0,
+    midVal: 500,
     highVal: 900,
   };
 
 
   constructor() {
     try {
-      const exist = readFileSync(`${homedir()}/.gasrc}`)
+      const exist = readFileSync(`${homedir()}/.gasrc`)
       if (exist) {
         const parse = JSON.parse(readFileSync(`${homedir()}/.gasrc`).toString())
         this.config = parse
