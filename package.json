@@ -57,6 +57,8 @@
     "@adonisjs/lucid": "^21.3.0",
     "@vinejs/vine": "^2.1.0",
     "better-sqlite3": "^11.5.0",
+    "firebase": "^11.0.2",
+    "firebase-admin": "^13.0.1",
     "luxon": "^3.5.0",
     "reflect-metadata": "^0.2.2"
   },

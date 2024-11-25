@@ -1,6 +1,7 @@
 import Sensor from "#models/sensor";
 
 import { SensorData } from "../types/SensorData.js";
+import PushNotificationService from "./PushNotificationService.js";
 
 class DataService {
   private lastWriteTime: number = 0; // Tracks the last write timestamp
@@ -24,6 +25,14 @@ class DataService {
     const now = Date.now();
     const throttleInterval = 10 * 1000; // 10 seconds
 
+    // Push service hook
+    await PushNotificationService.shouldNotify(localData.gas1, "Gas (MQ-2)")
+    await PushNotificationService.shouldNotify(localData.gas2, "Gas (MQ-135)")
+    await PushNotificationService.shouldNotify(localData.pressure, "Pressure")
+
+
+
+
     // Always write immediately if humanDetected is true
     if (localData.humanDetected) {
       console.log("Immediate write due to humanDetected");
@@ -38,6 +47,7 @@ class DataService {
     }
 
     await this.writeToDatabase(localData);
+    
     return this.data;
   }
 
