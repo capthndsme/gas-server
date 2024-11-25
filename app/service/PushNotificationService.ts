@@ -43,6 +43,7 @@ class PushNotificationService {
       Date.now() - this.lastNotify[sensor] < 3 * 60 * 1000
     ) {
       console.log("Notifier: Cooldown")
+      return false;
     }
 
     // if value below medium value, ignore.
