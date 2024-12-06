@@ -38,9 +38,9 @@ class PushNotificationService {
     const {highVal, midVal} = SettingService.config;
     const severity = val > highVal ? "HIGH" : "MEDIUM"
 
-    // 5 minute cooldown
+    // 12s cooldown
     if (
-      Date.now() - this.lastNotify[sensor] < 3 * 60 * 1000
+      Date.now() - this.lastNotify[sensor] < 12000
     ) {
       console.log("Notifier: Cooldown")
       return false;
@@ -57,7 +57,7 @@ class PushNotificationService {
       {
         tokens: targets,
         notification: {
-          body: `${severity==="HIGH"?"Danger": "Warning"}: ${sensor} level is ${severity.toLowerCase()}. (${val}). Exhaust has been started.`,
+          body: `${severity==="HIGH"?"Danger": "Warning"}: ${sensor} level is ${severity.toLowerCase()}. (${val}). ${sensor==="Pressure"?"":" Exhaust has been started."}`,
           title: `Gas ${severity==="HIGH"?"Danger": "Warning"}!`
         }
       }
