@@ -31,7 +31,7 @@ export default class Sensor extends BaseModel {
           AVG(pressure) as avg_pressure,
           AVG(gas_1) as avg_gas1,
           AVG(gas_2) as avg_gas2,
-           MAX(humanDetected) as humanDetected
+           MAX(human_detected) as humanDetected
       FROM sensors
       WHERE created_at >= datetime('now', '-3 hours')
       GROUP BY time_group
