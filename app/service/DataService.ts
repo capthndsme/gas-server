@@ -71,9 +71,7 @@ class DataService {
   }
 
   async history() {
-    return await Sensor.query()
-      .orderBy('created_at', 'desc')
-      .limit(20)
+    return await Sensor.history()
   }
 
   async getLastDetect() {
